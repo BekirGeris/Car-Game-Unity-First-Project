@@ -57,7 +57,7 @@ public class ArabaScript : MonoBehaviour
 
     void zamanYazdır(){
         zaman += Time.deltaTime;
-        if (zaman > 1 && flag)
+        if (zaman > 1 && zaman < 15)
         {
             sayac++;
             zaman = 0;
@@ -67,18 +67,22 @@ public class ArabaScript : MonoBehaviour
 
     void oyunBittimi() 
     {
-        if (sayac == 10)
+        if (sayac == 15)
         {
             finishText.gameObject.SetActive(true);
             flag = false;
             SceneManager.LoadScene(0);
         }
 
-        if (sayac < 10 && flag == false)
+        if (sayac < 15 && flag == false)
         {
             finishText.text = "You Win";
             finishText.gameObject.SetActive(true);
-            SceneManager.LoadScene(0);
+            if (sayac == 15)
+            {
+                SceneManager.LoadScene(0);
+            }
+            
         }
 
     }
